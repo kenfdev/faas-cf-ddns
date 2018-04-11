@@ -1,0 +1,16 @@
+provider:
+  name: faas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  cf-ddns:
+    lang: go
+    handler: ./cf-ddns
+    image: kenfdev/cf-ddns:0.1
+    environment:
+      write_debug: 'true'
+      read_timeout: 30
+      write_timeout: 30
+      exec_timeout: 30
+      API_KEY: ""
+      EMAIL: 'kenfdev@gmail.com'
