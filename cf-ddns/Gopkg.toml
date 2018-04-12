@@ -24,3 +24,7 @@
 [[constraint]]
   name = "github.com/cloudflare/cloudflare-go"
   version = "0.8.4"
+
+[[constraint]]
+  name = "github.com/codegangsta/cli"
+  version = "1.20.0"
