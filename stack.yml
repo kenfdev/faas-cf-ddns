@@ -4,7 +4,7 @@ provider:
 
 functions:
   cf-ddns:
-    lang: golang-http
+    lang: go
     handler: ./cf-ddns
     image: kenfdev/cf-ddns:0.1
     environment:

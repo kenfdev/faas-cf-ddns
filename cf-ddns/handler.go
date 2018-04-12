@@ -2,11 +2,7 @@ package function
 
 import (
 	"encoding/json"
-	"log"
-	"net/http"
 	"os"
-
-	"github.com/openfaas-incubator/go-function-sdk"
 )
 
 type DNSRecord struct {
@@ -36,8 +32,8 @@ type Response struct {
 	Result string `json:"result"`
 }
 
-// Handle a function invocation
-func Handle(req handler.Request) (handler.Response, error) {
+func Handle(req []byte) string {
+
 	var err error
 
 	// FIXME: change to secrets
@@ -45,37 +41,23 @@ func Handle(req handler.Request) (handler.Response, error) {
 	email := os.Getenv("EMAIL")
 
 	var request Request
-	err = json.Unmarshal(req.Body, &request)
+	err = json.Unmarshal(req, &request)
 	if err != nil {
-		return handler.Response{
-			Body:       []byte("Unmarshall error"),
-			StatusCode: http.StatusBadRequest,
-		}, err
+		return "Unmarshall error"
 	}
 
 	ipService := NewIPService()
 	dnsService, err := NewDNSService(apiKey, email)
 	if err != nil {
-		return handler.Response{
-			Body:       []byte("DNSService initialization error"),
-			StatusCode: http.StatusInternalServerError,
-		}, err
+		return "DNSService initialization error"
 	}
 
 	ddnsService := NewDDNSService(ipService, dnsService)
 
 	err = ddnsService.UpdateDNSRecordIfNecessary(request.ZoneName, request.Domains)
 	if err != nil {
-		return handler.Response{
-			Body:       []byte("Update failed"),
-			StatusCode: http.StatusInternalServerError,
-		}, err
+		return "Update failed"
 	}
-	log.Println("Update DNS Record Finish!")
 
-	return handler.Response{
-		Body:       []byte("Update complete"),
-		StatusCode: http.StatusOK,
-	}, err
-
+	return "Update complete"
 }
