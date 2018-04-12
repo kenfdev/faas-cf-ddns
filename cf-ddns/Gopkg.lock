@@ -8,12 +8,6 @@
   version = "v0.8.4"
 
 [[projects]]
-  name = "github.com/codegangsta/cli"
-  packages = ["."]
-  revision = "cfb38830724cc34fedffe9a2a29fb54fa9169cd1"
-  version = "v1.20.0"
-
-[[projects]]
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
@@ -46,6 +40,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "e5f86f75cd7dbeed6223da24b70b9bb2528b7b4a818d0a47d2309f19e8382233"
+  inputs-digest = "b5e338a90fd9c58295bfbfbf583f888d34196a6e23ed81ad2ef7608c7de14945"
   solver-name = "gps-cdcl"
   solver-version = 1
