@@ -4,13 +4,13 @@ provider:
 
 functions:
   cf-ddns:
-    lang: go
+    lang: golang-http
     handler: ./cf-ddns
     image: kenfdev/cf-ddns:0.1
     environment:
       write_debug: 'true'
-      read_timeout: 30
-      write_timeout: 30
-      exec_timeout: 30
+      read_timeout: 10
+      write_timeout: 10
+      exec_timeout: 10
       API_KEY: ""
       EMAIL: 'kenfdev@gmail.com'

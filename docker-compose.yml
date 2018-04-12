@@ -8,6 +8,6 @@ services:
       write_debug: 'true'
       API_KEY: "${API_KEY}"
       EMAIL: 'kenfdev@gmail.com'
-      read_timeout: 30
-      write_timeout: 30
-      exec_timeout: 0
+      read_timeout: 10
+      write_timeout: 10
+      exec_timeout: 10
